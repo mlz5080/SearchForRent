@@ -282,12 +282,8 @@ def get_analysis():
 
 @auth.verify_password
 def verify_password(username, password):
-	print(username)
-	print(password)
 	if(len(username)==0 or len(password)==0):
 		return False
-	print("entered here")
-	print(username,password)
 	response = user_table.query(KeyConditionExpression=Key('login').eq(username))
 	print(response)
 	if len(response['Items'])==0 or not response['Items'][0]['password'] in password:
